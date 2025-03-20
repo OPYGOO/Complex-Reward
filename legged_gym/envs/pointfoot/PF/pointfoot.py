@@ -1215,3 +1215,10 @@ class PointFoot:
 
     def _reward_survival(self):
         return (~self.reset_buf).float() * self.dt
+
+#Adding
+    
+    def _reward_tracking_lin_vel(self):
+        #Encourages the robot to follow the desired velocity trajectory accurately.
+        lin_vel_error = torch.sum(torch.square(self.commands[:, :2] - self.base_lin_vel[:, :2]), dim=1)
+        return torch.exp(-lin_vel_error / self.cfg.rewards.tracking_sigma)
