@@ -1218,7 +1218,14 @@ class PointFoot:
 
 #Adding
     
-    def _reward_tracking_lin_vel(self):
-        #Encourages the robot to follow the desired velocity trajectory accurately.
-        lin_vel_error = torch.sum(torch.square(self.commands[:, :2] - self.base_lin_vel[:, :2]), dim=1)
-        return torch.exp(-lin_vel_error / self.cfg.rewards.tracking_sigma)
+    def _reward_motion_intent(self):
+        # About the thinking numbers of future steps
+        future_steps = self.cfg.rewards.future_steps
+        pos_errors = torch.zeros_like(self.base_lin_vel[:, 0])
+
+        for k in range(1, future_steps + 1):
+            predicted_pos = self.root_states[:, :2] + k * self.base_lin_vel[:, :2] * self.dt
+            target_pos = self.future_commands[:, k-1, :2]
+            pos_errors += torch.norm(predicted_pos - target_pos, dim=-1)
+            
+        return torch.exp(-pos_errors / (future_steps * self.cfg.rewards.tracking_sigma))

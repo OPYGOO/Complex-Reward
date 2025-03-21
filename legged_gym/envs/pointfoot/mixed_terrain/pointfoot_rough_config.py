@@ -163,6 +163,8 @@ class PointFootRoughCfg(BaseConfig):
             unbalance_feet_height = -60.0
             feet_distance = -100
             survival = 100
+        ###
+            tracking_motion_intent = 8.0 
 
         import os
         robot_type = os.getenv("ROBOT_TYPE")
@@ -176,6 +178,8 @@ class PointFootRoughCfg(BaseConfig):
         min_feet_air_time = 0.25
         max_feet_air_time = 0.65
         tracking_sigma = 0.25  # tracking reward = exp(-error^2/sigma)
+        ###
+        future_steps = 10 # about the thinking numbers of future steps
 
     class normalization:
         class obs_scales:
