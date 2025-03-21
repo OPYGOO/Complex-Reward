@@ -50,6 +50,8 @@ class PointFootRoughCfg(BaseConfig):
             ang_vel_yaw = [-1, 1]  # min max [rad/s]
             heading = [-3.14, 3.14]
 
+        
+
     class init_state:
         import os
         robot_type = os.getenv("ROBOT_TYPE")

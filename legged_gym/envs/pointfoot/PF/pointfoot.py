@@ -1220,12 +1220,16 @@ class PointFoot:
     
     def _reward_motion_intent(self):
         # about the thinking numbers of future steps
+        self.sim_time = getattr(self, "sim_time", 0) + self.dt
+        t = self.sim_time
+        self.desired_vel = torch.tensor([torch.sin(t), torch.cos(t)], device=self.device)
+
         future_steps = self.cfg.rewards.future_steps
         pos_errors = torch.zeros_like(self.base_lin_vel[:, 0])
 
         for k in range(1, future_steps + 1):
             predicted_pos = self.root_states[:, :2] + k * self.base_lin_vel[:, :2] * self.dt
-            target_pos = self.future_commands[:, k-1, :2]
+            target_pos = self.root_states[:, :2] + k * self.desired_vel[:, :2] * self.dt
             pos_errors += torch.norm(predicted_pos - target_pos, dim=-1)
             
         return torch.exp(-pos_errors / (future_steps * self.cfg.rewards.tracking_sigma))
