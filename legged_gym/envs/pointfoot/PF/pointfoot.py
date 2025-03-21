@@ -1222,7 +1222,7 @@ class PointFoot:
         # about the thinking numbers of future steps
         self.sim_time = getattr(self, "sim_time", 0) + self.dt
         t = self.sim_time
-        self.desired_vel = torch.tensor([torch.sin(t), torch.cos(t)], device=self.device)
+        self.desired_vel = torch.tensor([torch.sin(torch.tensor(t)), torch.cos(torch.tensor(t))], device=self.device)
 
         future_steps = self.cfg.rewards.future_steps
         pos_errors = torch.zeros_like(self.base_lin_vel[:, 0])
