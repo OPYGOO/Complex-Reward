@@ -1223,13 +1223,15 @@ class PointFoot:
         self.sim_time = getattr(self, "sim_time", 0) + self.dt
         t = self.sim_time
         self.desired_vel = torch.tensor([torch.sin(torch.tensor(t)), torch.cos(torch.tensor(t))], device=self.device)
+        print(self.root_states.shape)  # 打印查看形状
+        print(self.desired_vel.shape)  # 打印查看形状
 
         future_steps = self.cfg.rewards.future_steps
         pos_errors = torch.zeros_like(self.base_lin_vel[:, 0])
 
         for k in range(1, future_steps + 1):
             predicted_pos = self.root_states[:, :2] + k * self.base_lin_vel[:, :2] * self.dt
-            target_pos = self.root_states[:, :2] + k * self.desired_vel[:, :2].unsqueeze(1) * self.dt
+            target_pos = self.root_states[:, :2] + k * self.desired_vel[:, :2] * self.dt
             pos_errors += torch.norm(predicted_pos - target_pos, dim=-1)
             
         return torch.exp(-pos_errors / (future_steps * self.cfg.rewards.tracking_sigma))
