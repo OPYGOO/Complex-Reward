@@ -163,8 +163,8 @@ class PointFootRoughCfg(BaseConfig):
             unbalance_feet_height = -60.0
             feet_distance = -100
             survival = 100
-        ###
-            tracking_motion_intent = 8.0 
+            ###
+            motion_intent = 8.0 
 
         import os
         robot_type = os.getenv("ROBOT_TYPE")

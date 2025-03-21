@@ -1219,7 +1219,7 @@ class PointFoot:
 #Adding
     
     def _reward_motion_intent(self):
-        # About the thinking numbers of future steps
+        # about the thinking numbers of future steps
         future_steps = self.cfg.rewards.future_steps
         pos_errors = torch.zeros_like(self.base_lin_vel[:, 0])
 
