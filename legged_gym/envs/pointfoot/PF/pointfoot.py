@@ -1229,7 +1229,7 @@ class PointFoot:
 
         for k in range(1, future_steps + 1):
             predicted_pos = self.root_states[:, :2] + k * self.base_lin_vel[:, :2] * self.dt
-            target_pos = self.root_states[:, :2] + k * self.desired_vel[:, :2] * self.dt
+            target_pos = self.root_states[:, :2] + k * self.desired_vel[:, :2].unsqueeze(1) * self.dt
             pos_errors += torch.norm(predicted_pos - target_pos, dim=-1)
             
         return torch.exp(-pos_errors / (future_steps * self.cfg.rewards.tracking_sigma))
