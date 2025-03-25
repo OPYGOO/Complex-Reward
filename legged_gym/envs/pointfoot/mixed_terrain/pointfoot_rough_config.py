@@ -166,7 +166,7 @@ class PointFootRoughCfg(BaseConfig):
             feet_distance = -100
             survival = 100
             ###
-            motion_intent = 8.0 
+            motion_intent = 6.0 
 
         import os
         robot_type = os.getenv("ROBOT_TYPE")
@@ -181,7 +181,7 @@ class PointFootRoughCfg(BaseConfig):
         max_feet_air_time = 0.65
         tracking_sigma = 0.25  # tracking reward = exp(-error^2/sigma)
         ###
-        future_steps = 10 # about the thinking numbers of future steps
+        future_steps = 15 # about the thinking numbers of future steps
 
     class normalization:
         class obs_scales:
