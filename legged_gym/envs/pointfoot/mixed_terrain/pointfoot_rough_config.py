@@ -166,7 +166,8 @@ class PointFootRoughCfg(BaseConfig):
             feet_distance = -100
             survival = 100
             ###
-            motion_intent = 6.0 
+            motion_intent = 6.0
+            linear_walking = 20 
 
         import os
         robot_type = os.getenv("ROBOT_TYPE")
