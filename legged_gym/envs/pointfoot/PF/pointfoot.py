@@ -1123,7 +1123,7 @@ class PointFoot:
         return (~self.reset_buf).float() * self.dt
     
     ################################### Dense Reward ####################################################
-    '''
+    
     def _reward_lin_vel_z(self):
         # Penalize z axis base linear velocity
         return torch.square(self.base_lin_vel[:, 2])
@@ -1234,7 +1234,7 @@ class PointFoot:
         # penalize torques too close to the limit
         return torch.sum(
             (torch.abs(self.torques) - self.torque_limits * self.cfg.rewards.soft_torque_limit).clip(min=0.), dim=1)
-    '''
+
 ###############################################################
     def _reward_linear_walking(self):
         future_steps = self.cfg.rewards.future_steps

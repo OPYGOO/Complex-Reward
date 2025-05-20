@@ -142,31 +142,31 @@ class PointFootRoughCfg(BaseConfig):
 
     class rewards:
         class scales:
-            action_rate = -0.01
-            ang_vel_xy = -0.05
-            base_height = -10.0
+            action_rate =0 #-0.01
+            ang_vel_xy = 0 #-0.05
+            base_height = 0 #-10.0
             collision = -50.0
-            dof_acc = -2.5e-07
+            dof_acc = 0 #-2.5e-07
             dof_pos_limits = -0.0
             dof_vel = -0.0
             feet_air_time = 60
             feet_contact_forces = -0.01
             feet_stumble = -0.0
-            lin_vel_z = -0.5
+            lin_vel_z =  0.0 #-0.5
             no_fly = 1.0
-            orientation = -5.0
+            orientation = 0 #-5.0
             stand_still = -1.0
             termination = -0.0
-            torque_limits = -0.1
+            torque_limits =0 #-0.1
             torques = -2.5e-05
-            tracking_ang_vel = 5
-            tracking_lin_vel = 10.0
-            unbalance_feet_air_time = -300.0
-            unbalance_feet_height = -60.0
-            feet_distance = -100
+            tracking_ang_vel = 0 #5
+            tracking_lin_vel = 0 #10.0
+            unbalance_feet_air_time = 0 #-300.0
+            unbalance_feet_height = 0 #-60.0
+            feet_distance = 0 #-100
             survival = 100
             ###
-            motion_intent = 6.0
+            motion_intent = 0 #6.0
             linear_walking = 20 
 
         import os
