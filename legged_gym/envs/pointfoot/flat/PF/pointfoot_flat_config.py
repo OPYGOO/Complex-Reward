@@ -43,4 +43,4 @@ class PointFootFlatCfgPPO(PointFootRoughCfgPPO):
 
     class runner(PointFootRoughCfgPPO.runner):
         experiment_name = 'pointfoot_flat'
-        max_iterations = 12000
+        max_iterations = 5000
