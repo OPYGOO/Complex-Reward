@@ -155,14 +155,14 @@ class PointFootRoughCfg(BaseConfig):
             lin_vel_z =  -0.5
             no_fly = 1.0
             orientation = -5.0
-            stand_still = -1.0
+            stand_still = 0 #-1.0
             termination = -0.0
             torque_limits = -0.1
             torques = -2.5e-05
             tracking_ang_vel = 5
             tracking_lin_vel = 10.0
             unbalance_feet_air_time = -300.0
-            unbalance_feet_height = -60.0
+            unbalance_feet_height = 0 #-60.0
             feet_distance = -100
             survival = 100
             ###
