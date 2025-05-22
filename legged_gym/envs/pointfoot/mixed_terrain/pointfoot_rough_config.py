@@ -144,13 +144,13 @@ class PointFootRoughCfg(BaseConfig):
         class scales:
             action_rate = -0.01
             ang_vel_xy = -0.05
-            base_height = -10.0
+            base_height =  0 #-10.0
             collision = 0 #-50.0 #2-2
             dof_acc = -2.5e-07
             dof_pos_limits = -0.0
             dof_vel = -0.0
             feet_air_time = 60
-            feet_contact_forces = -0.01
+            feet_contact_forces = 0 #-0.01
             feet_stumble = -0.0
             lin_vel_z =  -0.5
             no_fly = 1.0
