@@ -151,7 +151,7 @@ class PointFootRoughCfg(BaseConfig):
             dof_vel = -0.0
             feet_air_time = 60
             feet_contact_forces = 0 #-0.01
-            feet_stumble = -0.1 #-0.0
+            feet_stumble = -0.0
             lin_vel_z =  -0.5
             no_fly = 0 #1.0
             orientation = 0 #-5.0
