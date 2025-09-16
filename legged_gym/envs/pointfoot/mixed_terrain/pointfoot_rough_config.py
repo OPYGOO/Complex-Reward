@@ -50,6 +50,8 @@ class PointFootRoughCfg(BaseConfig):
             ang_vel_yaw = [-1, 1]  # min max [rad/s]
             heading = [-3.14, 3.14]
 
+        
+
     class init_state:
         import os
         robot_type = os.getenv("ROBOT_TYPE")
@@ -140,29 +142,32 @@ class PointFootRoughCfg(BaseConfig):
 
     class rewards:
         class scales:
-            action_rate = -0.01
+            action_rate = 0 #-0.01
             ang_vel_xy = -0.05
-            base_height = -10.0
+            base_height = 0 #-10.0
             collision = -50.0
-            dof_acc = -2.5e-07
+            dof_acc = 0 #-2.5e-07
             dof_pos_limits = -0.0
             dof_vel = -0.0
             feet_air_time = 60
-            feet_contact_forces = -0.01
+            feet_contact_forces = 0 #-0.01
             feet_stumble = -0.0
-            lin_vel_z = -0.5
-            no_fly = 1.0
-            orientation = -5.0
+            lin_vel_z =  -0.5
+            no_fly = 0 #1.0
+            orientation = 0 #-5.0
             stand_still = -1.0
-            termination = -0.0
+            termination = -1 #-0.0
             torque_limits = -0.1
-            torques = -2.5e-05
-            tracking_ang_vel = 5
-            tracking_lin_vel = 10.0
-            unbalance_feet_air_time = -300.0
+            torques = 0 #-2.5e-05
+            tracking_ang_vel = 0 #5
+            tracking_lin_vel = 0 #10.0
+            unbalance_feet_air_time = 0 #-300.0
             unbalance_feet_height = -60.0
             feet_distance = -100
             survival = 100
+            ###
+            motion_intent = 0 #6.0
+            linear_walking = 10 
 
         import os
         robot_type = os.getenv("ROBOT_TYPE")
@@ -176,6 +181,8 @@ class PointFootRoughCfg(BaseConfig):
         min_feet_air_time = 0.25
         max_feet_air_time = 0.65
         tracking_sigma = 0.25  # tracking reward = exp(-error^2/sigma)
+        ###
+        future_steps = 15 # about the thinking numbers of future steps
 
     class normalization:
         class obs_scales:
@@ -259,7 +266,7 @@ class PointFootRoughCfgPPO(BaseConfig):
         policy_class_name = 'ActorCritic'
         algorithm_class_name = 'PPO'
         num_steps_per_env = 24  # per iteration
-        max_iterations = 100000  # number of policy updates
+        max_iterations = 7000  # number of policy updates
 
         # logging
         save_interval = 200  # check for potential saves every this many iterations

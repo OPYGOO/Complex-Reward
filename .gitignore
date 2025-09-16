@@ -14,7 +14,7 @@ dist/
 *.py[cod]
 
 # Log files
-*.log
+#*.log
 
 # Package files
 *.jar
@@ -51,8 +51,8 @@ Thumbs.db
 # VS Code
 .vscode
 # logs
-logs
-runs
+#logs
+#runs
 
 # other
 *.egg-info
